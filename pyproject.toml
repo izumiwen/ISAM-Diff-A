@@ -1,0 +1,9 @@
+[project]
+name = "project-name-bootstrap"
+version = "0.0.0"
+description = "僅限工程 discovery 的標準函式庫 bootstrap"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[tool.project_name]
+research_runtime = "blocked_pending_user_authorization"

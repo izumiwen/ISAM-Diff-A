@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Checkpoint metadata",
+  "type": "object",
+  "required": ["format_version", "experiment_id", "epoch", "resolved_config_path"],
+  "properties": {
+    "format_version": {"type": "string", "const": "1.0"},
+    "experiment_id": {"type": "string"},
+    "epoch": {"type": "integer", "minimum": 0},
+    "best_metric": {"type": ["number", "null"]},
+    "monitor_name": {"type": ["string", "null"]},
+    "monitor_mode": {"enum": ["max", "min", null]},
+    "resolved_config_path": {"type": "string"},
+    "model_state_dict": {"type": "string"},
+    "optimizer_state_dict": {"type": "string"},
+    "scheduler_state_dict": {"type": ["string", "null"]},
+    "scaler_state_dict": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

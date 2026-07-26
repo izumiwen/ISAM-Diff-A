@@ -1,0 +1,11 @@
+env/
+.venv/
+__pycache__/
+*.py[cod]
+outputs/
+/external_sources/CompVis-zigma/
+/assets/
+/checkpoints/
+/vae/
+/data/
+/cache/

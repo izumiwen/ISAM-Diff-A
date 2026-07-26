@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A0 asset registry",
+  "type": "object",
+  "required": [
+    "repository_url", "source_commit", "source_tree_sha256", "source_dirty_status",
+    "checkpoint_path", "checkpoint_sha256", "checkpoint_size_bytes", "checkpoint_license",
+    "vae_id", "vae_revision", "vae_sha256", "latent_scaling_factor",
+    "interpolant", "prediction_parameterization", "time_endpoints", "solver",
+    "conditioning_contract", "dataset_manifest_path", "dataset_license",
+    "status", "blocked_codes", "diagnostics"
+  ],
+  "properties": {
+    "repository_url": {"type": ["string", "null"]},
+    "source_commit": {"type": ["string", "null"]},
+    "source_tree_sha256": {"type": ["string", "null"]},
+    "source_dirty_status": {"type": ["string", "null"]},
+    "checkpoint_path": {"type": ["string", "null"]},
+    "checkpoint_sha256": {"type": ["string", "null"]},
+    "checkpoint_size_bytes": {"type": ["integer", "null"]},
+    "checkpoint_license": {"type": ["string", "null"]},
+    "vae_id": {"type": ["string", "null"]},
+    "vae_revision": {"type": ["string", "null"]},
+    "vae_sha256": {"type": ["string", "null"]},
+    "latent_scaling_factor": {"type": ["number", "null"]},
+    "interpolant": {"type": ["string", "null"]},
+    "prediction_parameterization": {"type": ["string", "null"]},
+    "time_endpoints": {"type": ["object", "null"]},
+    "solver": {"type": ["string", "null"]},
+    "conditioning_contract": {"type": ["object", "string", "null"]},
+    "dataset_manifest_path": {"type": ["string", "null"]},
+    "dataset_license": {"type": ["string", "null"]},
+    "status": {"type": "string"},
+    "blocked_codes": {"type": "array"},
+    "diagnostics": {"type": "array"},
+    "diagnostic_paths": {"type": "array"}
+  },
+  "additionalProperties": false
+}

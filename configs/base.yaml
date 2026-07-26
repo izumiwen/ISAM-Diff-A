@@ -1,0 +1,32 @@
+{
+  "format_version": "1.0",
+  "experiment_id": "A_feasibility_contract_discovery_20260726",
+  "bootstrap": {
+    "python_requirement": "3.12",
+    "dependencies": "blocked"
+  },
+  "research_contract": {
+    "status": "blocked",
+    "fields": {
+      "repository_url": null,
+      "source_commit": null,
+      "source_tree_sha256": null,
+      "source_dirty_status": null,
+      "checkpoint_path": null,
+      "checkpoint_sha256": null,
+      "checkpoint_size_bytes": null,
+      "checkpoint_license": null,
+      "vae_id": null,
+      "vae_revision": null,
+      "vae_sha256": null,
+      "latent_scaling_factor": null,
+      "interpolant": null,
+      "prediction_parameterization": null,
+      "time_endpoints": null,
+      "solver": null,
+      "conditioning_contract": null,
+      "dataset_manifest_path": null,
+      "dataset_license": null
+    }
+  }
+}

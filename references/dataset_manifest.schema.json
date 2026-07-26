@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dataset manifest",
+  "type": "object",
+  "required": ["format_version", "dataset_id", "root_uri", "split_files"],
+  "properties": {
+    "format_version": {"type": "string", "const": "1.0"},
+    "dataset_id": {"type": "string"},
+    "root_uri": {"type": "string", "description": "本機絕對路徑或受治理的 URI；資料集本體不可納入 Git。"},
+    "split_files": {"type": "object", "additionalProperties": {"type": "string"}},
+    "checksum": {"type": ["string", "null"]},
+    "license": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

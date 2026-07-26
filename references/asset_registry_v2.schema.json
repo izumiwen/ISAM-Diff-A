@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A0 asset registry v2",
+  "type": "object",
+  "required": ["format_version", "source", "checkpoint", "vae", "dataset"],
+  "properties": {
+    "format_version": {"type": "string", "const": "2.0"},
+    "source": {
+      "type": "object",
+      "required": ["repository_url", "checkout_path", "commit", "git_tree_id", "source_tree_sha256", "worktree_clean", "license", "license_path", "license_sha256", "provenance_evidence"],
+      "properties": {
+        "repository_url": {"type": ["string", "null"]}, "checkout_path": {"type": ["string", "null"]}, "commit": {"type": ["string", "null"]}, "git_tree_id": {"type": ["string", "null"]}, "source_tree_sha256": {"type": ["string", "null"]}, "worktree_clean": {"type": ["boolean", "null"]}, "license": {"type": ["string", "null"]}, "license_path": {"type": ["string", "null"]}, "license_sha256": {"type": ["string", "null"]}, "provenance_evidence": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": ["path", "sha256", "size_bytes", "license", "provenance_evidence", "metadata_path"],
+      "properties": {"path": {"type": ["string", "null"]}, "sha256": {"type": ["string", "null"]}, "size_bytes": {"type": ["integer", "null"]}, "license": {"type": ["string", "null"]}, "provenance_evidence": {"type": ["string", "null"]}, "metadata_path": {"type": ["string", "null"]}},
+      "additionalProperties": false
+    },
+    "vae": {
+      "type": "object",
+      "required": ["id", "revision", "path", "sha256", "size_bytes", "license", "provenance_evidence"],
+      "properties": {"id": {"type": ["string", "null"]}, "revision": {"type": ["string", "null"]}, "path": {"type": ["string", "null"]}, "sha256": {"type": ["string", "null"]}, "size_bytes": {"type": ["integer", "null"]}, "license": {"type": ["string", "null"]}, "provenance_evidence": {"type": ["string", "null"]}},
+      "additionalProperties": false
+    },
+    "dataset": {
+      "type": "object",
+      "required": ["manifest_path", "license", "provenance_evidence"],
+      "properties": {"manifest_path": {"type": ["string", "null"]}, "license": {"type": ["string", "null"]}, "provenance_evidence": {"type": ["string", "null"]}},
+      "additionalProperties": false
+    },
+    "status": {"type": "string"},
+    "blocked_codes": {"type": "array", "items": {"type": "string"}},
+    "diagnostics": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

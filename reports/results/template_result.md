@@ -1,32 +1,35 @@
-# 實驗結果：{experiment_id}
+# Formal Experiment 結果範本
 
-- 日期：{YYYY-MM-DD}
-- 狀態：completed / stopped / failed / interrupted
-- Run 目錄：{outputs/...}
+只有已開始正式模型、資料、指標或研究證據執行的 Formal Experiment 使用本範本。Canonical 結果要求與 material-deviation 定義見 `docs/experiment_protocol.md`。
 
-## 資料、模型與設定
+```md
+# {experiment_id}: Result
 
-- 資料集與 split：
-- 模型/架構摘要：
-- Config：
-- Checkpoint：
+## Status
 
-## 指標
+Success | Failure | Interrupted | Inconclusive | Blocked
 
-| Metric | Best | Best epoch | Last | Last epoch |
-|---|---:|---:|---:|---:|
-| {metric} | | | | |
+## Executed Protocol
 
-## 判讀
+## Deviations from Plan
 
-- 與 baseline 比較：
-- 曲線判讀（過擬合/平台/持續改善）：
-- 此 run 證明：
-- 此 run 不證明：
+## Evidence
 
-## 原始產物與下一步
+## Metrics
 
-- `resolved_config.yaml`：
-- `run_metadata.json`、`environment.json`：
-- logs/metrics/checkpoints：
-- 下一步（若不確定則 blocked）：
+## Comparison with Closest Valid Baseline
+
+## Interpretation
+
+### Supported
+
+### Not Supported
+
+### Unproven
+
+## Artifact Paths
+
+## Recommended Next Action
+```
+
+結果必須記錄實際執行內容，區分 material research deviation 與 non-material administrative/engineering defect，並連結足以驗證模型、資料、設定、環境、指標與主張邊界的 canonical evidence。

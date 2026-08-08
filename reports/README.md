@@ -1,24 +1,26 @@
 # 報告導覽
 
-本目錄保存可追溯的研究決策與實驗證據；歷史計畫、結果與稽核結論不得覆寫或刪除。
+本目錄保存可追溯的研究決策與實驗證據；歷史計畫、結果、稽核與 output 不得覆寫、搬移或刪除。事件是否需要記帳或封存，依 [`../docs/experiment_protocol.md`](../docs/experiment_protocol.md) 的 material trigger 判定。
 
 | 路徑 | 用途 |
 |---|---|
-| [`experiment_log.md`](experiment_log.md) | 附加式研究帳本；記錄正式實驗的規劃、開始、結束、稽核與影響研究決策的新證據 |
-| [`plans/`](plans/) | 每個正式實驗各自一份計畫 |
+| [`experiment_log.md`](experiment_log.md) | 附加式帳本；只記錄 Formal Experiment 授權/實質開始/終態、獨立研究稽核、accepted engineering compatibility handoff 與改變研究決策的重大證據 |
+| [`plans/`](plans/) | Formal Experiment 與需要時的 Engineering Discovery Plan |
 | [`plans/template_plan.md`](plans/template_plan.md) | 建立實驗計畫的範本 |
-| [`results/`](results/) | 每個完成、中止、失敗或中斷的 run 結果 |
+| [`results/`](results/) | 已開始產生正式研究證據的 Formal Experiment 結果 |
 | [`results/template_result.md`](results/template_result.md) | 建立結果報告的範本 |
-| [`audits/`](audits/) | 由未參與規劃或執行的獨立稽核者撰寫驗收報告 |
+| [`audits/`](audits/) | 工程與研究稽核；角色獨立性與狀態定義見 `docs/subagent_workflow.md` |
+| [`accepted/`](accepted/) | 僅收錄獨立 Research Audit 為 **ACCEPTED** 的 Formal Experiment |
+| [`archive/README.md`](archive/README.md) | material outcome 的封存路徑與 dossier 規則 |
 | [`templates/`](templates/) | 實驗帳本、決策、失敗分類與最終主張的可重複使用格式 |
 | [`decisions/`](decisions/) | 影響研究設計的獨立決策紀錄 |
 
-## 命名與流程
+## 使用規則
 
-1. 先建立 `plans/{experiment_id}_plan.md`，明確寫出目標、資料與 split、baseline、指標、成功條件與停止條件。
-2. 執行期間，所有產物保留在唯一的 `outputs/<run_id>/` 目錄；解析後設定、環境資訊、日誌、指標與 checkpoint 需可回溯。
-3. 結束後建立 `results/{experiment_id}_result.md`，如實記錄結果及其限制；不得把 **Observed** 或 **Unproven** 寫成 **Supported**。
-4. 獨立稽核者在 `audits/{experiment_id}_audit.md` 記錄驗收；詳細角色邊界見 [`docs/subagent_workflow.md`](../docs/subagent_workflow.md)。
-5. 將正式事件與影響研究決策的新證據附加到 `experiment_log.md`；日常文件整理不記入帳本。
+1. Formal Experiment 先建立 `plans/{experiment_id}_plan.md`；例行局部修復不必為了文件形式而新建計畫。
+2. 所有正式 run 使用唯一的 `outputs/<run_id>/`，保存設定、環境、命令、資料/模型來源、日誌、指標與 checkpoint 的可追溯證據。
+3. 結束後依需要建立 `results/{experiment_id}_result.md`，如實區分 **Observed**、**Supported**、**Unproven** 與 **Blocked**。
+4. 工程與研究稽核的角色、必要獨立性及 status，依 [`docs/subagent_workflow.md`](../docs/subagent_workflow.md)；工程 readiness 不能替代研究 acceptance。
+5. 僅在 material trigger 發生時追加 `experiment_log.md` 或建立 archive dossier；中間診斷、局部修復、格式修正與重複 smoke test 不各自記帳或封存。
 
-目前尚無正式實驗紀錄。此狀態是 **Observed**，不代表研究設計已核准或結果已被支持。
+只有獨立 Research Audit 的 **ACCEPTED** 可進入 `accepted/` 並支持完成的研究主張。

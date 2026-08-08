@@ -1,22 +1,23 @@
 # 失敗案例分類模板
 
-每個可重現的失敗案例另存為 `reports/results/{experiment_id}_failure_<number>.md`，並保留其原始 run 與視覺化產物。
+本範本只用於需要形成長期研究或重大工程證據的 material failure case。Intermediate local repair、routine smoke failure、parser/fixture/Markdown defect、receipt finalization 與 non-blocking audit correction 保留在相關診斷或任務證據中，不各自建立 failure report。
 
 ```md
 # F-<number>: <失敗名稱>
 
 - 類別：
-- 資料集與影像 ID：
+- 關聯 experiment／run／task：
+- Materiality trigger：
+- 影響的研究、相容性或 claim boundary：
 - 重現命令：
 - 預期行為：
 - 觀察到的行為：
-- No-anchor 輸出：
-- Anchored 輸出：
-- Ground truth（若有）：
-- Difference map 與 state drift 證據：
+- 原始診斷與 artifact 路徑：
+- 資料、模型、checkpoint、VAE、設定與環境身分（如適用）：
 - 推測機制：
 - 已確認機制：
 - 嚴重度與發生頻率：
 - 已測試的緩解措施：
 - 狀態：`Observed | Supported | Unproven | Blocked`
+- Required follow-up：
 ```

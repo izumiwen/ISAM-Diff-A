@@ -1,32 +1,91 @@
-# 實驗計畫：{experiment_id}
+# 計畫範本
 
-- 日期：{YYYY-MM-DD}
-- 狀態：blocked / ready
+Canonical 計畫要求定義於 `docs/experiment_protocol.md`。只有 Formal Experiment 或 material technical uncertainty 需要獨立 Engineering Discovery Plan；已由 `AGENTS.md`、核准計畫或既有 discovery envelope 授權的 routine local repair 不需要新計畫。
 
-## 目標與背景
+## Formal Experiment Plan
 
-{研究問題、假設、相關 baseline；未知處請明確標記 blocked。}
+```md
+# {experiment_id}: {short title}
 
-## 範圍與資料
+## Plan Type
 
-- 資料集與 split：
-- 資料 manifest：
-- 不納入範圍：
+Formal Experiment
 
-## 模型與設定
+## Status
 
-- 模型/baseline：
-- Config 路徑：
-- 會影響結果的超參數：
-- 指標與 monitor mode：
+Draft | Approved | Superseded | Cancelled
 
-## 成功、失敗與停止條件
+## Authorizing Research Phase
 
-- 成功條件：
-- 失敗/停止條件：
+## Objective
 
-## 驗證與產物
+## Hypothesis
 
-- [ ] config 已解析並保存至 run
-- [ ] 環境、命令、Git 狀態已保存
-- [ ] 結果將寫入 `reports/results/{experiment_id}_result.md`
+## Baseline and Comparison
+
+## Dataset and Split
+
+## Fixed Conditions
+
+## Model, Checkpoint, and VAE Contract
+
+## Preprocessing and Data Isolation Contract
+
+## Primary Variable
+
+## Required Controls
+
+## Configuration and Resource Budget
+
+## Metrics and Evaluation Procedure
+
+## Acceptance Criteria
+
+## Failure and Stopping Criteria
+
+## Expected Artifacts
+
+## Risks and Validity Threats
+
+## Required Engineering Handoffs
+```
+
+## Engineering Discovery Plan
+
+```md
+# {experiment_id}: {short title}
+
+## Plan Type
+
+Engineering Discovery
+
+## Status
+
+Draft | Approved | Superseded | Cancelled
+
+## Authorizing Research Phase
+
+## Objective and Technical Uncertainty
+
+## Frozen Research Boundary
+
+## Immutable Source and Baseline Identity
+
+## Permitted Technical Candidates
+
+## Forbidden Fallbacks
+
+## Local-Repair Authority
+
+## Repair Budget
+
+## Required Checks and Diagnostics
+
+## Compatibility Handoff
+
+## Material Blockers
+
+## Stopping and Escalation Criteria
+
+## Expected Artifacts
+```

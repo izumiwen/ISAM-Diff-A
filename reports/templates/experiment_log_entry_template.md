@@ -1,24 +1,16 @@
 # 實驗帳本條目模板
 
-將每個正式事件附加到 [`../experiment_log.md`](../experiment_log.md) 末尾；不得以本模板取代既有帳本或刪除失敗、停止、拒絕與被取代的紀錄。
+[`../experiment_log.md`](../experiment_log.md) 是精簡、append-only 的研究帳本，不是完整工程 transaction log。只有 `docs/experiment_protocol.md` 定義的 Formal Experiment milestone、獨立 Research Audit、accepted engineering compatibility handoff、material blocker 或 decision-changing evidence 才追加條目。
 
 ```md
-## YYYY-MM-DD — [實驗 ID 或工作 ID] — [PLANNED | RUNNING | COMPLETED | FAILED | INTERRUPTED | BLOCKED | AUDITED]
+## YYYY-MM-DD — [Experiment ID or Task ID] — [Status]
 
 - **Objective:**
-- **Owner:**
-- **Research question / hypothesis:**
-- **Independent variable:**
-- **Controlled variables:**
-- **Dataset and split:**
-- **Registered success / failure criteria:**
+- **Change or decision:**
 - **Evidence:**
-- **Run IDs and artifact paths:**
-- **Metrics, runtime, and memory:**
-- **Audit verdict:** `ACCEPTED | INCOMPLETE | REJECTED | BLOCKED | pending`
-- **Interpretation:** `Observed | Supported | Unproven | Blocked`
-- **Decision:**
+- **Interpretation:**
+- **Artifacts:**
 - **Next action:**
 ```
 
-`PASS` 或任何單一指標不等於可接受的研究結論；只有獨立稽核的 `ACCEPTED` 可支持後續正式主張。
+不要為 intermediate discovery attempt、局部修復、unit/import/CLI/parser/fixture/smoke failure、格式修正、receipt finalization 或重複狀態更新建立獨立帳本條目。歷史錯誤以新的日期化更正條目處理，不得改寫或刪除原條目。

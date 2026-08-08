@@ -1,55 +1,43 @@
-# project_name
+# ISAM-Diff
 
-可重現、可擴充的 Python 深度學習研究專案骨架。本階段只提供工程治理、設定、run 產物與稽核工具；沒有模型、資料集、權重或訓練實作。
+ISAM-Diff 是深度學習研究專案。此 repository 將程式、設定、治理文件、研究證據與執行產物分開保存，以維持可重現性、來源追溯與研究主張邊界。
 
-## 目錄約定
+## 專案結構
 
-- `src/project_name/`：唯一 Python package；資料、模型、engine、loss、metrics 與工具皆收納於此。
-- [`configs/`](configs/README.md)：YAML 設定；`base.yaml` 只含工程預設，研究欄位保持 `blocked` 或 `null`。
-- `scripts/`：CLI 入口；訓練、評估與推論會明確拋出 `NotImplementedError`。
-- [`docs/`](docs/README.md)：正式實驗、委派與 run 的治理規範。
-- [`reports/`](reports/README.md)：實驗帳本、計畫、結果與獨立稽核報告。
-- `references/`：資料 manifest 與 checkpoint metadata 的 JSON Schema。
-- `tests/`：不依賴模型或資料集的骨架測試。
-- `changelogs/`：變更紀錄範本。
-- `outputs/`：每次 run 的唯一目錄；不納入 Git。
-- `external_sources/`：只讀外部來源參考；不屬於本專案程式碼。固定的 ZigMa clone 位於
-  `external_sources/CompVis-zigma/`，必須維持 Git 忽略、detached HEAD 與未修改狀態。
-
-## 文件導覽
-
-| 目的 | 入口 |
+| 路徑 | 用途 |
 |---|---|
-| 專案治理、正式實驗與 run 規範 | [`docs/README.md`](docs/README.md) |
-| ISAM-Diff 候選研究計畫 | [`docs/isam_diff/README.md`](docs/isam_diff/README.md) |
-| 建立或選擇實驗設定 | [`configs/README.md`](configs/README.md) |
-| 規劃、記錄及查閱實驗證據 | [`reports/README.md`](reports/README.md) |
-| 專案層級工作規則 | [`AGENTS.md`](AGENTS.md) |
-| 查閱資料與 checkpoint 中繼資料格式 | [`references/`](references/) |
+| [`src/project_name/`](src/project_name/) | 專案 Python package 與研究實作 |
+| [`configs/`](configs/README.md) | 可解析的實驗與工程設定 |
+| [`scripts/`](scripts/README.md) | 訓練、評估、推論、驗證與稽核入口 |
+| [`docs/`](docs/README.md) | Canonical 實驗、角色與 run 治理規範 |
+| [`reports/`](reports/README.md) | 計畫、結果、稽核、決策、帳本與 review/archive surface |
+| [`references/`](references/) | 資料 manifest 與 checkpoint metadata schema |
+| [`tests/`](tests/README.md) | 自動化回歸、契約與 smoke checks |
+| `outputs/` | 唯一 run 與診斷產物；不作為版本控制的治理文件 |
+| `external_sources/` | 只讀外部來源；不屬於本專案程式碼 |
 
-目前沒有已定義的研究問題、資料集、模型或正式實驗結果；這些狀態在設定與報告中應維持為 **Blocked**，直到有明確且可追溯的決策。
+## 治理入口
 
-## 最小驗證
+先閱讀 [`AGENTS.md`](AGENTS.md)，再依工作責任選擇 canonical 文件：
 
-目前系統僅有 Python 3；尚未安裝 pip、PyTorch 或 pytest。因此可先執行不依賴第三方套件的命令：
+- Formal/非正式範圍、material deviation、研究證據、接受、帳本與封存觸發：[`docs/experiment_protocol.md`](docs/experiment_protocol.md)
+- 角色分工、獨立性、委派順序與稽核狀態：[`docs/subagent_workflow.md`](docs/subagent_workflow.md)
+- run 身分、執行證據、retry、資料執行安全與環境/工具鏈操作：[`docs/run_standard.md`](docs/run_standard.md)
+
+[`docs/governance.md`](docs/governance.md) 只提供 non-normative 導覽摘要。`governance/` 保存舊版治理文件，不是現行規則來源。
+
+## 研究證據
+
+Formal Experiment 的計畫、結果與稽核分別保存於 `reports/plans/`、`reports/results/` 與 `reports/audits/`。`reports/experiment_log.md` 是 append-only 的精簡研究帳本；`reports/accepted/` 僅收錄獨立 Research Audit 為 **ACCEPTED** 的正式實驗；符合 material trigger 的其他 outcome 依 [`reports/archive/README.md`](reports/archive/README.md) 封存。
+
+Routine engineering 與已授權的 local repair 不需要為每次嘗試建立新 plan、audit、ledger entry 或 dossier。是否需要升級為 Engineering Discovery 或 Formal Experiment，以 canonical 治理文件的 scope 與 materiality 規則判定。
+
+## 驗證
+
+先使用相關 CLI 的 `--help` 檢查實際可用入口，再執行與變更範圍相稱的最小測試或 smoke check。專案結構與基本治理檢查入口為：
 
 ```bash
-python3 scripts/train.py --help
-python3 scripts/evaluate.py --help
-python3 scripts/inference.py --help
-python3 scripts/validate_dataset.py --help
-python3 scripts/audit_project.py
-python3 scripts/train.py --prepare-run --experiment-name dummy
+python3 scripts/audit_project.py --help
 ```
 
-最後一個命令只建立獨立 run、`resolved_config.yaml`、`run_metadata.json` 與 `environment.json`，不會訓練。
-
-## 依賴與 lock file
-
-本專案使用 setuptools 的 `pyproject.toml`，其本身沒有原生 lock file；目前環境也沒有 pip、uv、Poetry 或其他可用鎖定工具，且本階段未獲授權安裝它們。因此尚未產生 lock file。
-
-替代方案是在獲得安裝授權後，建立 `env/`，以固定 Python 版本安裝 `pip-tools`，再從 `requirements.txt` 產生並提交 `requirements.lock`；所有正式 run 應記錄該 lock 的雜湊與 Python/CUDA 環境。`requirements.txt` 現為宣告性相依清單，不能單獨保證位元級重現。
-
-## 開始研究前的必要決策
-
-請先明確指定研究問題、資料集與 split、模型/baseline、指標與監測方向、運算資源限制。建立 `reports/plans/{experiment_id}_plan.md` 後，才可實作資料與模型流程。
+Python 測試應使用專案既有虛擬環境；若不存在，依 `AGENTS.md` 建立 `env`。
